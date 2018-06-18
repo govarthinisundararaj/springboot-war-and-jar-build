@@ -1,14 +1,23 @@
-# springboot-war-and-jar-build
-TODO: Format this README, WAR build test
+# Spring Boot Dual WAR/Executable JAR Build [![Templates]
+> This is a basic scaffolding project for Spring Boot/Maven peojects which builds both a WAR and a JAR using the same code. 
+> NOTE: Although outlined in this README, the JNDI lookup feature has only been implicitly tested. If the implementation 
+  yields any errors, please let me know or fork/PR. This project has been tested with Java 8 and Tomcat 8.5 (both embedded and standalone) 
 
-Basic scaffolding project for Spring Boot which builds both a WAR and a JAR. Tested with Java 8 and Tomcat 9
+Using Maven profiles, this project defines two build types:
+    
+    1. Using Maven profile dev, this would build and run a Spring Boot app 
+    2. Using Maven profile release, this would build and run a standard WAR to be deployed on an app server (i.e. Tomcat) 
 
-Features
-* Log4j2 is configured with some defaults (which is a lot of logging). Modify log4j2.xml under src/resources if you'd 
+Additional Features:
+* A basic hello world service and unit test, referenced from the Spring Boot docs - https://spring.io/guides/gs/spring-boot/
+* Log4j2 - configured with some defaults (which is a lot of logging). Modify log4j2.xml under src/resources if you'd 
 like different logging configuration
-* A basic hello world service and unit test
 * Setup to use environment property files. To use this feature, create a application-{activeProfile}.properties file 
-under src/resources. Then run either of the following maven commands:
+under src/resources.
+
+## Usage: 
+
+The two configured Maven commands. Note, {activeProfile} must match the naming convention of the property files 
     
 1. Executable JAR - the 'dev' profile is active by default so no need to pass in a Maven profile  
     ```
@@ -20,17 +29,16 @@ under src/resources. Then run either of the following maven commands:
         mvn clean install -P release -Dspring.profiles.active={activeProfile}
     ```
 
-Tomcat Setup
-* Create a setenv.sh (or setnv.bat) in %TOMCAT_HOME%/bin and include the following line (this is in shell syntax, for 
-Windows, please look up bat syntax)
-    ```sbtshell
-      set JAVA_OPTS=%JAVA_OPTS% -Dspring.profiles.active=dev
+#### Tomcat Setup
+* Under %TOMCAT_HOME%/conf, modify catalina.properties ton include the following line
+
+    ``` sbtshell
+        spring.profiles.active={activeProfile}
     ```
+    
+##### JNDI Setup
 
-NOTE: Although outlined in this README, the JNDI lookup feature has only been implicitly tested. If the implementation 
-yields any errors, please let me know or fork/PR. 
-
-To register a DataSource to use JNDI, add the following in Application.java. This is used for consistency between the 
+* To register a DataSource to use JNDI, add the following in Application.java. This is used for consistency between the 
 two builds. It registers the DataSource as a Spring bean for bean management. I have not specified a destroyMethod 
 since it should persists through the application's lifetime. I set the profile to all but test since I mock my unit 
 tests (I connect externally only when performing integration tests). To use a DataSource during testing, just remove that line.
