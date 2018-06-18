@@ -3,12 +3,12 @@
 > NOTE: Although outlined in this README, the JNDI lookup feature has only been implicitly tested. If the implementation 
   yields any errors, please let me know or fork/PR. This project has been tested with Java 8 and Tomcat 8.5 (both embedded and standalone) 
 
-Using Maven profiles, this project defines two build types:
+## Using Maven profiles, this project defines two build types:
     
     1. Using Maven profile dev, this would build and run a Spring Boot app 
     2. Using Maven profile release, this would build and run a standard WAR to be deployed on an app server (i.e. Tomcat) 
 
-Additional Features:
+## Additional Features:
 * A basic hello world service and unit test, referenced from the Spring Boot docs - https://spring.io/guides/gs/spring-boot/
 * Log4j2 - configured with some defaults (which is a lot of logging). Modify log4j2.xml under src/resources if you'd 
 like different logging configuration
@@ -36,7 +36,7 @@ The two configured Maven commands. Note, {activeProfile} must match the naming c
         spring.profiles.active={activeProfile}
     ```
     
-##### JNDI Setup
+#### JNDI Setup
 
 * To register a DataSource to use JNDI, add the following in Application.java. This is used for consistency between the 
 two builds. It registers the DataSource as a Spring bean for bean management. I have not specified a destroyMethod 
