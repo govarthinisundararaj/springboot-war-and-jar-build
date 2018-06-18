@@ -19,29 +19,39 @@ public class Application extends SpringBootServletInitializer {
 
     @Value("${spring.datasource.tomcat.url:default}")
     String url;
+
     @Value("${spring.datasource.tomcat.username:default}")
     String username;
+
     @Value("${spring.datasource.tomcat.password:default}")
     String password;
+
     @Value("${spring.datasource.tomcat.driver-class-name:default}")
     String driverClassName;
+
     @Value("${spring.datasource.tomcat.initial-size:default}")
     String initialSize;
+
     @Value("${spring.datasource.tomcat.max-wait:default}")
     String maxWait;
+
     @Value("${spring.datasource.tomcat.max-active:default}")
     String maxActive;
+
     @Value("${spring.datasource.tomcat.max-idle:default}")
     String maxIdle;
+
     @Value("${spring.datasource.tomcat.max-age:default}")
     String maxAge;
+
     @Value("${spring.datasource.tomcat.test-on-borrow:default}")
     String testOnBorrow;
+
     @Value("${spring.datasource.tomcat.validation-query:default}")
     String validationQuery;
+
     @Value("${spring.profiles.active}")
     String activeSpringProfile;
-    private String jndiName = null;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
