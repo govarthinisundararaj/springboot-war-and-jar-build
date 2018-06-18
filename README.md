@@ -1,4 +1,4 @@
-# Spring Boot Dual WAR/Executable JAR Build [![Templates]
+# Spring Boot Dual WAR/Executable JAR Build
 > This is a basic scaffolding project for Spring Boot/Maven peojects which builds both a WAR and a JAR using the same code. 
 > NOTE: Although outlined in this README, the JNDI lookup feature has only been implicitly tested. If the implementation 
   yields any errors, please let me know or fork/PR. This project has been tested with Java 8 and Tomcat 8.5 (both embedded and standalone) 
@@ -10,6 +10,8 @@
 
 ## Additional Features:
 * A basic hello world service and unit test, referenced from the Spring Boot docs - https://spring.io/guides/gs/spring-boot/
+Please take note of the different context URLs:
+    * URL (for both JAR and WAR deployments): http://localhost:8080/springboot_war_and_jar_scaffold/greet/greeting
 * Log4j2 - configured with some defaults (which is a lot of logging). Modify log4j2.xml under src/resources if you'd 
 like different logging configuration
 * Setup to use environment property files. To use this feature, create a application-{activeProfile}.properties file 
