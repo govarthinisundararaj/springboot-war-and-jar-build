@@ -109,7 +109,7 @@
     </build>
 
     <profiles>
-        <profile>
+        <!-- <profile>
             <id>dev</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -117,7 +117,7 @@
             <properties>
                 <project.packaging>jar</project.packaging>
             </properties>
-        </profile>
+        </profile> -->
         <profile>
             <id>release</id>
             <properties>
