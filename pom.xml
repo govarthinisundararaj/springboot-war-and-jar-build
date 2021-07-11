@@ -120,6 +120,9 @@
         </profile> -->
         <profile>
             <id>release</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <properties>
                 <project.packaging>war</project.packaging>
             </properties>
